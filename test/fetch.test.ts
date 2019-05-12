@@ -1,4 +1,4 @@
-import DummyClass from '../src/fetch'
+import fetch from '../src/fetch'
 
 /**
  * Dummy test
@@ -8,7 +8,7 @@ describe('Dummy test', () => {
     expect(true).toBeTruthy()
   })
 
-  it('DummyClass is instantiable', () => {
-    expect(new DummyClass()).toBeInstanceOf(DummyClass)
+  it('should be a function', () => {
+    expect(typeof fetch).toEqual('function')
   })
 })
