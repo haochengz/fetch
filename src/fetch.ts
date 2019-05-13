@@ -2,10 +2,11 @@
 // import "core-js/fn/array.find"
 // ...
 
-import { IRequestConfig } from './types'
+import { IRequestConfig } from './declare'
+import xhr from './xhr'
 
-function fetch(config: IRequestConfig) {
-  //
+function fetch(config: IRequestConfig): void {
+  xhr(config)
 }
 
 export default fetch
