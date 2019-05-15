@@ -36,7 +36,7 @@ module.exports = app.listen(port, () => {
 });
 
 function registerSimpleRouter(router) {
-  router.get('/simple/get', function (req, res) {
+  router.get('/simple/get', function (_, res) {
     res.json({
       msg: 'Simple reguest'
     });
