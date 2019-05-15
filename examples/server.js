@@ -27,6 +27,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 registerSimpleRouter(router);
+registerAppendParams(router);
 
 app.use(router);
 
@@ -41,4 +42,14 @@ function registerSimpleRouter(router) {
       msg: 'Simple reguest'
     });
   });
+}
+
+function registerAppendParams(router) {
+  router.get('/simple/params', function(req, res) {
+    const query = req.query
+    res.json({
+      msg: 'Append Params OK',
+      query
+    })
+  })
 }
