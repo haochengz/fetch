@@ -4,9 +4,16 @@
 
 import { IRequestConfig } from './declare'
 import xhr from './xhr'
+import { buildUrl } from './helpers/url'
 
 function fetch(config: IRequestConfig): void {
-  xhr(config)
+  xhr(processConfig(config))
+}
+
+function processConfig(config: IRequestConfig): IRequestConfig {
+  // append params to url
+  config.url = buildUrl(config.url, config.params)
+  return config
 }
 
 export default fetch
