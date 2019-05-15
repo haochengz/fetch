@@ -26,7 +26,7 @@ function appendParamsToURL(url: string, params: string[]): string {
   const serializedParams = params.join('&')
   if (serializedParams) {
     const hashMarkIndex = url.indexOf('#')
-    url = url.slice(0, hashMarkIndex)
+    url = hashMarkIndex === -1 ? url : url.slice(0, hashMarkIndex)
 
     url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams
   }
