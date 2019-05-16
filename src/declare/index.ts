@@ -19,13 +19,13 @@ export type Method =
   | 'Option'
   | 'patch'
   | 'PATCH'
-  | 'Patch'
+  | 'Patch';
 
 export interface IRequestConfig {
-  url: string
-  method?: Method
+  url: string;
+  method?: Method;
 
   // TODO: data and params should be an union type
-  data?: any
-  params?: any
+  data?: any;
+  params?: any;
 }

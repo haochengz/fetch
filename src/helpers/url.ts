@@ -1,14 +1,14 @@
-import * as util from './utils'
+import * as util from './utils';
 
 export function buildUrl(url: string, params?: any): string {
   if (!params) {
-    return url
+    return url;
   }
 
-  const parts = resolveParams(params)
-  url = appendParamsToURL(url, parts)
+  const parts = resolveParams(params);
+  url = appendParamsToURL(url, parts);
 
-  return url
+  return url;
 }
 
 function encode(value: string): string {
@@ -19,48 +19,48 @@ function encode(value: string): string {
     .replace(/%2C/gi, ',')
     .replace(/%20/g, '+')
     .replace(/%5B/gi, '[')
-    .replace(/%5D/gi, ']')
+    .replace(/%5D/gi, ']');
 }
 
 function appendParamsToURL(url: string, params: string[]): string {
-  const serializedParams = params.join('&')
+  const serializedParams = params.join('&');
   if (serializedParams) {
-    const hashMarkIndex = url.indexOf('#')
-    url = hashMarkIndex === -1 ? url : url.slice(0, hashMarkIndex)
+    const hashMarkIndex = url.indexOf('#');
+    url = hashMarkIndex === -1 ? url : url.slice(0, hashMarkIndex);
 
-    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams
+    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
   }
 
-  return url
+  return url;
 }
 
 function resolveParams(params: any): string[] {
-  const parts: string[] = []
+  const parts: string[] = [];
 
   Object.keys(params).forEach((key: string) => {
-    const value = params[key]
+    const value = params[key];
     if (value === null || typeof value === 'undefined') {
-      return
+      return;
     }
 
-    let values = []
+    let values = [];
     if (Array.isArray(value)) {
-      values = value
-      key += '[]'
+      values = value;
+      key += '[]';
     } else {
-      values = [value]
+      values = [value];
     }
 
     values.forEach(v => {
       if (util.isDate(v)) {
-        v = v.toISOString()
+        v = v.toISOString();
       } else if (util.isObject(v)) {
-        v = JSON.stringify(v)
+        v = JSON.stringify(v);
       }
 
-      parts.push(`${encode(key)}=${encode(v)}`)
-    })
-  })
+      parts.push(`${encode(key)}=${encode(v)}`);
+    });
+  });
 
-  return parts
+  return parts;
 }
