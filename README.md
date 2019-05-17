@@ -1,2 +1,3 @@
 # fetch
-fetch for humans
+
+fetch is a xhr request library work on browsers.
