@@ -39,7 +39,7 @@ module.exports = app.listen(port, () => {
 function registerSimpleRouter(router) {
   router.get('/simple/get', function (_, res) {
     res.json({
-      msg: 'Simple reguest'
+      msg: 'Simple request'
     });
   });
 }
