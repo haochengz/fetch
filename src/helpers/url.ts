@@ -54,7 +54,7 @@ function resolveParams(params: any): string[] {
     values.forEach(v => {
       if (util.isDate(v)) {
         v = v.toISOString();
-      } else if (util.isObject(v)) {
+      } else if (util.isPlainObject(v)) {
         v = JSON.stringify(v);
       }
 
