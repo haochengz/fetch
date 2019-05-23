@@ -12,6 +12,11 @@ function fetch(config: IRequestConfig): void {
   xhr(processConfig(config));
 }
 
+/**
+ * 处理用户传入的config对象, 包括处理url, header等
+ * @param {IRequestConfig} config - 用户传入的config对象
+ * @returns {IRequestConfig} - 返回处理后的config对象, 可以直接传入xhr()发送http请求
+ */
 function processConfig(config: IRequestConfig): IRequestConfig {
   // append params to url
   config.url = buildUrl(config.url, config.params);
@@ -21,6 +26,7 @@ function processConfig(config: IRequestConfig): IRequestConfig {
 
   // transform the data object to json string
   config.data = transformRequestPayload(config.data);
+
   return config;
 }
 
