@@ -15,7 +15,7 @@ fetch({
   url: '/simple/payload',
   headers: {
     'Content-Type': 'application/json;charset=utf-8',
-    'Accecpt': 'application/json, text/plain, */*'
+    'Accept': 'application/json, text/plain, */*'
   },
   data: {
     name: 'Mike S. Huffpaff',
