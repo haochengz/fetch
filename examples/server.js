@@ -28,6 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 registerSimpleRouter(router);
 registerAppendParams(router);
+registerPayload(router);
 
 app.use(router);
 
@@ -50,6 +51,16 @@ function registerAppendParams(router) {
     res.json({
       msg: 'Append Params OK',
       query
+    })
+  })
+}
+
+function registerPayload(router) {
+  router.post('/simple/payload', function(req, res) {
+    const { body } = req;
+    res.json({
+      msg: 'received payload',
+      body
     })
   })
 }
