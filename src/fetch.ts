@@ -6,6 +6,7 @@ import { IRequestConfig } from './declare';
 import xhr from './xhr';
 import { buildUrl } from './helpers/url';
 import { transformRequestPayload } from './helpers/data';
+import { processHeaders } from './helpers/header';
 
 function fetch(config: IRequestConfig): void {
   xhr(processConfig(config));
@@ -14,6 +15,11 @@ function fetch(config: IRequestConfig): void {
 function processConfig(config: IRequestConfig): IRequestConfig {
   // append params to url
   config.url = buildUrl(config.url, config.params);
+
+  // add headers
+  config.headers = processHeaders(config.headers, config.data);
+
+  // transform the data object to json string
   config.data = transformRequestPayload(config.data);
   return config;
 }

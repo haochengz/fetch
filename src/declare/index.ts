@@ -28,4 +28,5 @@ export interface IRequestConfig {
   // TODO: data and params should be an union type
   data?: any;
   params?: any;
+  headers?: any;
 }
