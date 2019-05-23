@@ -16,7 +16,7 @@ function processConfig(config: IRequestConfig): IRequestConfig {
   // append params to url
   config.url = buildUrl(config.url, config.params);
 
-  // add headers
+  // add and normalize headers to config
   config.headers = processHeaders(config.headers, config.data);
 
   // transform the data object to json string
