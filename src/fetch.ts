@@ -8,7 +8,15 @@ import { buildUrl } from './helpers/url';
 import { transformRequestPayload } from './helpers/data';
 import { processHeaders } from './helpers/header';
 
+/**
+ * fetch 入口函数
+ *
+ * @param {IRequestConfig} config - request配置对象
+ * @returns {void}
+ */
 function fetch(config: IRequestConfig): void {
+  // FIXME: 所接受参数的有效性处理, url必有, params无或必须是对象
+  // headers无或必须是对象, data无或必须是对象
   xhr(processConfig(config));
 }
 

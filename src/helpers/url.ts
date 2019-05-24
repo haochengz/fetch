@@ -9,7 +9,8 @@ import * as util from './utils';
  * @returns {string} 返回生成的完整url
  */
 export function buildUrl(url: string, params?: any): string {
-  if (!params) {
+  // 空对象或其他空值则直接返回url不必做处理
+  if (!params || Object.keys(params).length === 0) {
     return url;
   }
 
@@ -22,7 +23,7 @@ export function buildUrl(url: string, params?: any): string {
 /**
  * resolveParams 解析参数, 依据不同的参数类型生成不同的字符串
  *
- * @param {any} - 需要解析为字符串数组的参数对象
+ * @param {any} - 需要解析为字符串数组的参数对象, 不能为undefined或null
  * @returns {string[]} - 解析后的字符串数组
  */
 function resolveParams(params: any): string[] {
@@ -83,9 +84,11 @@ function encode(value: string): string {
 function appendParamsToURL(url: string, params: string[]): string {
   const serializedParams = params.join('&');
   if (serializedParams) {
+    // 去除url哈希
     const hashMarkIndex = url.indexOf('#');
     url = hashMarkIndex === -1 ? url : url.slice(0, hashMarkIndex);
 
+    // 将序列化的url参数连接到url之后, 考虑原有url是否已有参数
     url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
   }
 
