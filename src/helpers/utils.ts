@@ -7,7 +7,7 @@ const toString = Object.prototype.toString;
  * @returns {value is Date}
  */
 export function isDate(value: any): value is Date {
-  return toString.call(value) === '[Object Date]';
+  return toString.call(value) === '[object Date]';
 }
 
 /**
