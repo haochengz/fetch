@@ -1,4 +1,4 @@
-import { isDate } from '../../src/helpers/utils';
+import { isDate, isObject, isPlainObject } from '../../src/helpers/utils';
 
 describe('isDate tests', () => {
   it('should returns a boolean value', () => {
@@ -30,10 +30,41 @@ describe('isDate tests', () => {
   });
 });
 
-// describe('isObject tests', () => {
-// it('should skip');
-// })
-//
-// describe('isPlainObject tests', () => {
-// it('should skip');
-// })
+describe('isObject tests', () => {
+  it('should returns true if a object passes in', () => {
+    const result = isObject({});
+    expect(result).toBe(true);
+  });
+  it('should returns true if a Date object passes in', () => {
+    const result = isObject(new Date());
+    expect(result).toBe(true);
+  });
+  it('should returns false if a null passes in', () => {
+    const result = isObject(null);
+    expect(result).toBe(false);
+  });
+  it('should returns false if a string passes in', () => {
+    const result = isObject('string');
+    expect(result).toBe(false);
+  });
+});
+
+describe('isPlainObject tests', () => {
+  it('should returns true if a object passes in', () => {
+    const result = isPlainObject({});
+    expect(result).toBe(true);
+  });
+  it('should returns false if a Date object passes in', () => {
+    const now = new Date();
+    const result = isPlainObject(now);
+    expect(result).toBe(false);
+  });
+  it('should returns false if a null passes in', () => {
+    const result = isObject(null);
+    expect(result).toBe(false);
+  });
+  it('should returns false if a string passes in', () => {
+    const result = isObject('string');
+    expect(result).toBe(false);
+  });
+});
