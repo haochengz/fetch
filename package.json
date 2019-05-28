@@ -59,7 +59,10 @@
     ],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
-      "/test/"
+      "/test/",
+      "/examples/",
+      "/coverage/",
+      "/tools/"
     ],
     "coverageThreshold": {
       "global": {
@@ -70,7 +73,7 @@
       }
     },
     "collectCoverageFrom": [
-      "src/*.{js,ts}"
+      "src/**/*.{js,ts}"
     ]
   },
   "prettier": {
