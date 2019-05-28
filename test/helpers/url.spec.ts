@@ -22,8 +22,9 @@ describe('buildUrl tests', () => {
   });
 
   it('should receive date object as query value', () => {
-    const result = buildUrl('http://google.com', { q: new Date('2019-5-27') });
-    expect(result).toBe('http://google.com?q=2019-05-26T16:00:00.000Z');
+    const date = new Date('2019-5-27');
+    const result = buildUrl('http://google.com', { q: date });
+    expect(result).toBe(`http://google.com?q=${date.toISOString()}`);
   });
 
   it('should receive plain object as query value', () => {
